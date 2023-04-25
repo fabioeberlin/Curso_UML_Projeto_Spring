@@ -2,6 +2,8 @@ package com.cursomc.domain;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,5 +31,6 @@ public class Cidade implements Serializable{
 	private String nome;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Estado estado;
 }
