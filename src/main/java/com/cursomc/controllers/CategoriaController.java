@@ -1,3 +1,4 @@
+
 package com.cursomc.controllers;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +61,20 @@ public class CategoriaController {
 		}
 		categoriaService.delete(categoriaOptional.get());
 		return ResponseEntity.status(HttpStatus.OK).body("Categoria deletada com sucesso");
+	}
+	
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Object> updateCategoria (@PathVariable(value = "id") Long id, @RequestBody @Valid CategoriaDto categoriaDto){
+		Optional<Categoria> categoriaOptional = categoriaService.findById(id);
+		if (!categoriaOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Categoria não encontrada");
+		}
+		
+		var categoria = categoriaOptional.get();
+		categoria.setNome(categoriaDto.getNome());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(categoriaService.save(categoria));
 	}
 
 }

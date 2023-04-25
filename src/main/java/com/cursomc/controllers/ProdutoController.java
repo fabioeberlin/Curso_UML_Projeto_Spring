@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cursomc.domain.Categoria;
 import com.cursomc.domain.Produto;
+import com.cursomc.dtos.CategoriaDto;
 import com.cursomc.dtos.ProdutoDto;
 import com.cursomc.services.ProdutoService;
 
@@ -61,6 +64,20 @@ public class ProdutoController {
 		}
 		produtoService.delete(produtoOptional.get());
 		return ResponseEntity.status(HttpStatus.OK).body("Produto deletado com sucesso");
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Object> updateProduto (@PathVariable(value = "id") Long id, @RequestBody @Valid ProdutoDto produtoDto){
+		Optional<Produto> produtoOptional = produtoService.findById(id);
+		if (!produtoOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrada");
+		}
+		
+		var produto = produtoOptional.get();
+		produto.setNome(produtoDto.getNome());
+		produto.setPreco(produtoDto.getPreco());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(produtoService.save(produto));
 	}
 
 }
