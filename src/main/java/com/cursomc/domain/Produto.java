@@ -1,6 +1,7 @@
 package com.cursomc.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,18 +10,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
-@Entity
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "TB_Categoria")
-public class Categoria implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
+@Entity
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Table(name = "TB_Produto")
+public class Produto implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +32,10 @@ public class Categoria implements Serializable {
 	@Column(nullable = false)
 	private String nome;
 	
-	private List<Produto> produtos = new ArrayList<>();
-		
+	@Column(nullable = false)
+	private BigDecimal preco;
+	
+	@ManyToMany
+	private List<Categoria> categorias = new ArrayList<>();
 
 }
