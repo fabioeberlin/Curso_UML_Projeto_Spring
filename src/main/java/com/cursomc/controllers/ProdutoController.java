@@ -1,8 +1,13 @@
 package com.cursomc.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +36,20 @@ public class ProdutoController {
 		var produto = new Produto();
 		BeanUtils.copyProperties(produtoDto, produto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.save(produto));
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Produto>> getAllProdutos(){
+		return ResponseEntity.status(HttpStatus.OK).body(produtoService.findAll());
+	}
+	
+	@GetMapping("/{produto_id}")
+	public ResponseEntity<Object> getOneProduto(@PathVariable(value = "produto_id") Long id){
+		Optional<Produto> produtoOptional = produtoService.findById(id);
+		if (!produtoOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrada");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(produtoOptional.get());
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.cursomc.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.cursomc.domain.Categoria;
@@ -19,6 +22,15 @@ public class CategoriaService {
 	@Transactional
 	public Categoria save(Categoria categoria) {
 		return categoriaRepository.save(categoria);
+	}
+
+	@Transactional
+	public List<Categoria> findAll() {
+		return categoriaRepository.findAll();
+	}
+	
+	public Optional<Categoria> findById(Long id) {
+		return categoriaRepository.findById(id);
 	}
 	
 }

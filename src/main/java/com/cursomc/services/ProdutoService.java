@@ -1,5 +1,8 @@
 package com.cursomc.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.cursomc.domain.Produto;
@@ -20,5 +23,15 @@ public class ProdutoService {
 	public Produto save(Produto produto) {
 		return produtoRepository.save(produto);
 	}
+
+	@Transactional
+	public List<Produto> findAll() {
+		return produtoRepository.findAll();
+	}
+
+	public Optional<Produto> findById(Long id) {
+		return produtoRepository.findById(id);
+	}
+	
 	
 }
