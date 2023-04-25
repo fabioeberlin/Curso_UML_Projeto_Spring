@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cursomc.domain.Categoria;
 import com.cursomc.domain.Produto;
-import com.cursomc.dtos.CategoriaDto;
 import com.cursomc.dtos.ProdutoDto;
 import com.cursomc.services.ProdutoService;
 
