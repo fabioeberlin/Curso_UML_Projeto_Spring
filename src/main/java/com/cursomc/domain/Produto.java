@@ -26,7 +26,7 @@ public class Produto implements Serializable{
 	
 	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)

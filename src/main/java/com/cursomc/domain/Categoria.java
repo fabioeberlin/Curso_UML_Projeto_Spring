@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,13 +24,13 @@ public class Categoria implements Serializable {
 
 	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)
 	private String nome;
 	
+	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
-		
 
 }
