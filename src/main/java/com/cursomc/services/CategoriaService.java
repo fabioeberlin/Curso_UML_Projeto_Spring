@@ -32,5 +32,10 @@ public class CategoriaService {
 	public Optional<Categoria> findById(Long id) {
 		return categoriaRepository.findById(id);
 	}
+
+	@Transactional
+	public void delete(Categoria categoria) {
+		categoriaRepository.delete(categoria);
+	}
 	
 }

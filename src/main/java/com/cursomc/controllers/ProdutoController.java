@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +51,16 @@ public class ProdutoController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrada");
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(produtoOptional.get());
+	}
+	
+	@DeleteMapping("/{produto_id}")
+	public ResponseEntity<Object> deleteProduto(@PathVariable(value = "produto_id") Long id){
+		Optional<Produto> produtoOptional = produtoService.findById(id);
+		if (!produtoOptional.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body("Produto não encontrada");
+		}
+		produtoService.delete(produtoOptional.get());
+		return ResponseEntity.status(HttpStatus.OK).body("Produto deletado com sucesso");
 	}
 
 }

@@ -13,7 +13,7 @@ public class ProdutoDto {
 	@NotBlank
 	private String nome;
 	
-	@NotBlank
+	//@NotBlank
 	private BigDecimal preco;
 
 }

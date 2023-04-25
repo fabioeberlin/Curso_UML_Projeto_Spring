@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +38,7 @@ public class Produto implements Serializable{
 	private BigDecimal preco;
 	
 	@ManyToMany
-	@JsonIgnore
+	@JsonBackReference
 	private List<Categoria> categorias = new ArrayList<>();
 
 }
