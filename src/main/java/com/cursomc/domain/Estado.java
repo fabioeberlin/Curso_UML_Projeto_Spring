@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +33,7 @@ public class Estado implements Serializable {
 	private String nome;
 	
 	@OneToMany(mappedBy = "estado")
-	@JsonManagedReference
+	@JsonBackReference
 	private List<Cidade> cidades = new ArrayList<>();
 
 }

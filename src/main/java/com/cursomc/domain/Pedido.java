@@ -1,15 +1,13 @@
 package com.cursomc.domain;
 
 import java.io.Serializable;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,8 +15,8 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "tb_cidade")
-public class Cidade implements Serializable{
+@Table(name = "tb_pedido")
+public class Pedido implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,9 +26,15 @@ public class Cidade implements Serializable{
 	private Long id;
 	
 	@Column(nullable = false)
-	private String nome;
+	private Date instante;
 	
-	@ManyToOne
-	@JsonManagedReference
-	private Estado estado;
+	
+	private Pagamento pagamento;
+	
+	
+	private Cliente cliente;
+	
+	
+	private Endereco enderecoDeEntrega;
+
 }
