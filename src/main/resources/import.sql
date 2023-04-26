@@ -26,5 +26,20 @@ insert into tb_endereco (id, bairro, cep, complemento, logradouro, numero, cidad
 insert into tb_telefone (cliente_id, telefones) values (1, '9999-1111');
 insert into tb_telefone (cliente_id, telefones) values (2, '9999-2222');
 
+insert into tb_pedido (id, instante, cliente_id, endereco_entrega_id) values (1, '2023-03-16 15:07:19', 1, 1);
+insert into tb_pedido (id, instante, cliente_id, endereco_entrega_id) values (2, '2023-03-16 18:07:19', 2, 2);
+
+insert into tb_pagamento (pedido_id, estado) values (1, 0);
+
+insert into tb_pagamento_cartao (numero_de_parcelas, pedido_id) values (10, 1);
+
+insert into tb_pagamento_boleto (data_pagamento, data_vencimento, pedido_id) values ('2023-03-16 15:07:19', '2023-04-16 15:07:19', 1);
+
+
+
+
+
+
+
 
 
