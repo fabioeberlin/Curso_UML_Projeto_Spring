@@ -59,7 +59,7 @@ public class EstadoController {
 			return ResponseEntity.status(HttpStatus.OK).body("Estado não encontrado");
 		}
 		estadoService.delete(estadoOptional.get());
-		return ResponseEntity.status(HttpStatus.OK).body("Estado deletado com sucesso");
+		return ResponseEntity.status(HttpStatus.OK).body("Estado excluido com sucesso");
 	}
 	
 	@PutMapping("/{id}")

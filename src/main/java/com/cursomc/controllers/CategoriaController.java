@@ -60,7 +60,7 @@ public class CategoriaController {
 			return ResponseEntity.status(HttpStatus.OK).body("Categoria não encontrada");
 		}
 		categoriaService.delete(categoriaOptional.get());
-		return ResponseEntity.status(HttpStatus.OK).body("Categoria deletada com sucesso");
+		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida com sucesso");
 	}
 	
 	
