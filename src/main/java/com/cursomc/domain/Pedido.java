@@ -3,6 +3,8 @@ package com.cursomc.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,14 +35,18 @@ public class Pedido implements Serializable{
 	private Date instante;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
+	@JsonManagedReference
 	private Pagamento pagamento;
 	
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name="endereco_entrega_id")
 	private Endereco enderecoDeEntrega;
-
+	
+	
 }

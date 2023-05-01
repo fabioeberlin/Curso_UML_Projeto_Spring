@@ -1,6 +1,6 @@
 package com.cursomc.dtos;
 
-import com.cursomc.domain.Estado;
+import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -8,11 +8,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CidadeDto {
+public class PagamentoDto {
 	
 	@NotBlank
-	private String nome;
+	private Date dataVencimento;
+	@NotBlank	
+	private Date dataPagamento;
 	@NotBlank
-	private Estado estado;
-	
+	private Long numeroParcelas;
 }
