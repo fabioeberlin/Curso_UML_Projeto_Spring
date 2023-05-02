@@ -35,6 +35,8 @@ insert into tb_pagamento_cartao (numero_de_parcelas, pedido_id) values (10, 1);
 
 insert into tb_pagamento_boleto (data_pagamento, data_vencimento, pedido_id) values ('2023-03-16 15:07:19', '2023-04-16 15:07:19', 1);
 
+insert into tb_item_pedido (desconto, preco, quantidade, produto_id, pedido_id) values (10.00, 32.60, 2, 1, 1);
+
 
 
 

@@ -3,7 +3,7 @@ package com.cursomc.domain;
 import java.io.Serializable;
 
 import com.cursomc.enums.EstadoPagamento;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -38,7 +38,7 @@ public class Pagamento implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId
-	@JsonBackReference
+	@JsonIgnore
 	private Pedido pedido;
 
 }
